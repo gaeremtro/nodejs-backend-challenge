@@ -1,5 +1,5 @@
-import { Schema } from "mongoose";
-import { MovieType } from "../types/movieType";
+import { Schema, model } from "mongoose";
+import { MovieType } from "../interfaces/movieInferface";
 
 export const movieSchema = new Schema<MovieType>({
     director: {
@@ -11,3 +11,6 @@ export const movieSchema = new Schema<MovieType>({
         unique: true,
     },
 });
+
+
+module.exports = model('movies', movieSchema);
