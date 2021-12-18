@@ -1,7 +1,7 @@
 
 interface UserInterface {
     id: string;
-    name: string;
-    list?: Array<ListType>;
+    title: string;
+    director: string;
   }
 
