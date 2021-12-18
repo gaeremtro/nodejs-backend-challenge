@@ -1,5 +1,6 @@
+import {MovieType} from './movieType';
 
-type ListType = {
-    id:string;
-    movie:Array<MovieType>
+
+export type ListType = {
+    movies:Array<MovieType>
 }

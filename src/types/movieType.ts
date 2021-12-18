@@ -1,7 +1,5 @@
 
-
-type MovieType = {
-    id:string;
+export type MovieType = {
     title:string;
     director:string;
 }
