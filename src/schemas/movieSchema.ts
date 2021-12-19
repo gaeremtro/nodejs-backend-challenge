@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
-import { MovieType } from "../interfaces/movieInferface";
+import { MovieInterface } from "../interfaces/movieInferface";
 
-export const movieSchema = new Schema<MovieType>({
+export const movieSchema = new Schema<MovieInterface>({
     director: {
         type: String,
     },

@@ -1,7 +1,8 @@
 
 import { ObjectId } from "mongoose";
 
-export interface UserType  {
+export interface UserInterface  {
+    _id?:string;
     name:string;
     password:string;
     lists:Array<ObjectId>;
