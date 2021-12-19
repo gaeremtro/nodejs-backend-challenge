@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import { UserInterface } from './src/interfaces/userInterface';
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017').
+mongoose.connect('mongodb://localhost:27017/node-back-db').
 catch ((error:any):void => {
     console.log('some think', error);
 })

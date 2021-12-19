@@ -9,7 +9,8 @@ function userController() {
     async function register(req: Request, res: Response, next: NextFunction) {
 
         if (req.body && req.body.name && req.body.password){
-            let newName = req.body.name.trim();
+            req.body.name = req.body.name.trim();
+            let newName = req.body.name
             let query = {name:newName}
 
             if (req.body.password.length < 8 || req.body.name.length < 1){
