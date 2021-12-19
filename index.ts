@@ -1,22 +1,29 @@
 "use strict";
-import { NextFunction, Request, Response } from 'express';
-import { model, Model } from 'mongoose';
+import { Request, Response } from 'express';
+
 import { UserInterface } from './src/interfaces/userInterface';
-import { userSchema } from './src/schemas/userSchema';
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017').
+catch ((error:any):void => {
+    console.log('some think', error);
+})
 
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const mongoose = require('mongoose');
+
+const User = require('./src/schemas/userSchema');
 
 //config and env variables
 const config = require("./config.ts");
 const PORT = config.PORT; // 8000
 
-mongoose.connect('mongodb://localhost:27017/test').
-catch ((error:any):void => {
-    console.log('some think', error);
-})
+
+const  userRouter = require ('./src/router/userRoutes');
+
+
+
 
 //initual middlewares
 app.use(cors());
@@ -27,14 +34,13 @@ app.use(
     })
 );
 
+app.use('/u', userRouter.routes);
 
 
-
-const User = require('./src/schemas/userSchema');
 app.get( "/", ( req:Request, res:Response ):void =>{
-    let query = { _id:'61bf406c5a8417cfb5dbfe9e'}
+    let query = {}
     
-     User.find(query, (result:Array<UserInterface>,err:any) => err? res.json(err): res.json(result));
+     User.find(query, (result:UserInterface,err:any) => err? res.json(err): res.json(result._id));
      
     })
 app.listen( PORT, () => {
