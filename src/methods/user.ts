@@ -14,7 +14,7 @@ async function register(req: Request, res: Response) {
     let newUser = new User(userData);
 
     try {
-        let result = newUser.save();
+        let result = await newUser.save();
         res.status(201)
             .send({ text: "user created Succesfully", data: result })
             .end();
