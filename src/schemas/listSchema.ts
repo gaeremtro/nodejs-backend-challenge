@@ -1,8 +1,8 @@
 import { Schema, model } from "mongoose";
 
-import { ListType } from "../interfaces/listInterface";
+import { ListInterface } from "../interfaces/listInterface";
 
-export const listSchema = new Schema<ListType>({
+export const listSchema = new Schema<ListInterface>({
     movies: [{ type: Schema.Types.ObjectId, ref: 'movies' }],
 });
 

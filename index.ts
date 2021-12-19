@@ -1,6 +1,8 @@
 "use strict";
 import { NextFunction, Request, Response } from 'express';
 import { model, Model } from 'mongoose';
+import { UserInterface } from './src/interfaces/userInterface';
+import { userSchema } from './src/schemas/userSchema';
 
 const express = require("express");
 const cors = require("cors");
@@ -30,10 +32,10 @@ app.use(
 
 const User = require('./src/schemas/userSchema');
 app.get( "/", ( req:Request, res:Response ):void =>{
-     let query = { };
-     User.find(query, (res:any,err:any) => console.log(res ?? err));
+    let query = { _id:'61bf406c5a8417cfb5dbfe9e'}
+    
+     User.find(query, (result:Array<UserInterface>,err:any) => err? res.json(err): res.json(result));
      
-    res.send('gg')
     })
 app.listen( PORT, () => {
 
