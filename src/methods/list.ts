@@ -9,7 +9,7 @@ const List = require("../schemas/listSchema");
 
 async function addList(req: Request, res: Response) {
     let data = req.body.name;
-    let userId = req.body._id;
+    let userId = req.body.userId;
 
     let query = {_id:userId}
     let newListData = {name: data};
@@ -20,7 +20,7 @@ async function addList(req: Request, res: Response) {
         let result  = await newList.save();
         
         if (result && result._id){
-            User.findOneAndUpdate(query, {$push: { list:result._id}});
+            await User.findOneAndUpdate(query, {$push: { lists:result._id}});
             res.status(201).send('new item added succesfully').end()
         }else{
             res.status(500).send({
