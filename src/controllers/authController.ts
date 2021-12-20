@@ -3,9 +3,9 @@ import { NextFunction, Request, Response } from "express";
 const User = require("../schemas/userSchema");
 
 async function authController(req: Request, res: Response, next: NextFunction) {
-    if (req.body && req.body.name && req.body.password) {
-        let userName = req.body.name;
-        let userPassword = req.body.password;
+    if (req.body && (req.body.name || req.params.name) && (req.body.password || req.params.password)) {
+        let userName = req.body.name ??  req.params.name;
+        let userPassword = req.body.password ??  req.params.password;
 
         let query = { name: userName };
 
