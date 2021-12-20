@@ -1,13 +1,19 @@
 import listController from "../controllers/listController";
+import authController  from '../controllers/authController';
 
 const express = require("express");
 
-
 const router = express.Router();
 
-const {addList} = require('../methods/list')
+const {addList, getList,getAllLists} = require('../methods/list')
+
 
 router.post('/addList',listController().addList, addList);
+
+router.get('/getlist', authController, listController().getList, getList)
+
+
+router.get('/getalllists', authController, listController().getAllLists, getAllLists)
 
 
 

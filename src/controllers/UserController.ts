@@ -27,8 +27,7 @@ function userController() {
                 }
             }
         }else {
-            res
-                .status(400)
+            res.status(400)
                 .send({
                     text:'Doesnt respect the correct structure, must have a name and password', 
                     error:'bad-formated-request'
@@ -36,7 +35,6 @@ function userController() {
                 .end()
         }
     }       
-   
 
     return { register };
 }
