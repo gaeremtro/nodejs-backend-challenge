@@ -6,6 +6,9 @@ const User = require("../schemas/userSchema");
 
 const List = require("../schemas/listSchema");
 
+
+const Movie = require("../schemas/movieSchema");
+
 async function addList(req: Request, res: Response) {
     let data = req.body.name;
     let userId = req.body.userId;
@@ -41,7 +44,7 @@ async function getList(req: Request, res: Response) {
     let query = { _id: listId };
 
     try {
-        let result = await List.findOne(query);
+        let result = await List.findOne(query).populate('movies');
 
         res.status(200).send(result);
     } catch (error) {
@@ -54,9 +57,9 @@ async function getAllLists(req: Request, res: Response) {
     let query = { _id: userId };
 
     try {
-        let result = await User.find(query);
-
-        res.status(200).send(result);
+        let result = await User.findOne(query).populate('lists');
+        await result.populate('lists.movies')
+        res.status(200).send(result.lists);
     } catch (error) {
         res.status(502).send({ text: "dbError", error: error });
     }

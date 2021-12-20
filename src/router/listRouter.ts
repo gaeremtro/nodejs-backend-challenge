@@ -5,12 +5,15 @@ const express = require("express");
 
 const router = express.Router();
 
-const {addList, getList} = require('../methods/list')
+const {addList, getList,getAllLists} = require('../methods/list')
 
 
 router.post('/addList',listController().addList, addList);
 
 router.get('/getlist', authController, listController().getList, getList)
+
+
+router.get('/getalllists', authController, listController().getAllLists, getAllLists)
 
 
 
