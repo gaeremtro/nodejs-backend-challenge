@@ -6,7 +6,7 @@ const List = require('../schemas/listSchema');
 function listController() {
 
     async function addList(req: Request, res: Response, next: NextFunction) {
-
+        
         
     }       
 

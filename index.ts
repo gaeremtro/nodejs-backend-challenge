@@ -13,16 +13,15 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
-const User = require('./src/schemas/userSchema');
+const User = require('./src/schemas/userSchema'); // line to delete
 
 //config and env variables
 const config = require("./config.ts");
 const PORT = config.PORT; // 8000
 
-
+//Router imports
 const  userRouter = require ('./src/router/userRoutes');
-
-
+const listRouter = require ('./src/router/listRouter');
 
 
 //initual middlewares
@@ -35,6 +34,7 @@ app.use(
 );
 
 app.use('/u', userRouter.routes);
+app.use('/list', listRouter.routes);
 
 
 app.get( "/", ( req:Request, res:Response ):void =>{
