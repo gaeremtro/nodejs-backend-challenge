@@ -3,7 +3,6 @@ import { NextFunction, Request, Response } from "express";
 const User = require("../schemas/userSchema");
 
 async function authController(req: Request, res: Response, next: NextFunction) {
-    
     if (req.body && req.body.name && req.body.password) {
         let userName = req.body.name;
         let userPassword = req.body.password;
@@ -30,7 +29,7 @@ async function authController(req: Request, res: Response, next: NextFunction) {
                     .end();
             }
         } catch (error) {
-            res.status(502).send({text:'auth/dbError', error})
+            res.status(502).send({ text: "auth/dbError", error });
         }
     } else {
         res.status(400)
