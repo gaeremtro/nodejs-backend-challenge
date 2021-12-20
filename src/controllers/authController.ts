@@ -3,17 +3,23 @@ import { NextFunction, Request, Response } from "express";
 const User = require("../schemas/userSchema");
 
 async function authController(req: Request, res: Response, next: NextFunction) {
-    if (req.body && (req.body.name || req.params.name) && (req.body.password || req.params.password)) {
-        let userName = req.body.name ??  req.params.name;
-        let userPassword = req.body.password ??  req.params.password;
+    if (
+        req.body &&
+        (req.body.name || req.params.name) &&
+        (req.body.password || req.params.password)
+    ) {
+        let userName = req.body.name ?? req.params.name;
+        let userPassword = req.body.password ?? req.params.password;
 
         let query = { name: userName };
 
         try {
             let result = await User.findOne(query);
             if (result.length > 0) {
-                if (result.password === userPassword) next();
-                else
+                if (result.password === userPassword) {
+                    req.body.user_id = result._id;
+                    next();
+                } else
                     res.status(401)
                         .send({
                             text: "Contraseña incorrecta",

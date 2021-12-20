@@ -34,6 +34,23 @@ async function addList(req: Request, res: Response) {
     }
 }
 
+async function getList(req: Request, res: Response) {
+    let listId = req.params.listId;
+
+    let query = {_id:listId}
+
+    
+    try{
+        let result  = await List.query(query);
+        
+        res.status(200).send(result).end();
+
+    }catch (error){
+        res.status(502).send({ text: "dbError", error: error });
+    }
+}
 
 
-module.exports = { addList };
+
+
+module.exports = { addList,getList };
