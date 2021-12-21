@@ -5,13 +5,13 @@ const List = require("../schemas/listSchema");
 const User = require("../schemas/userSchema");
 
 function listController() {
+
     async function addList(req: Request, res: Response, next: NextFunction) {
         if (req.body && req.body.name && req.body.userId) {
             let { userId } = req.body;
-            let query = { _id: userId };
             //it colud be a unique name list too...
             try {
-                let result = await User.findOne(query);
+                let result = await User.findById(userId);
                 console.log(result);
                 if (!result) {
                     res.status(404).send({
@@ -58,10 +58,9 @@ function listController() {
         ) {
             let listId = req.query.listId;
             let userId = req.body.user_id;
-            let query = { _id: userId };
 
             try {
-                let result = await User.findOne(query);
+                let result = await User.findById(userId);
                 let isListOwner = result.lists.some(
                     (element: ObjectId) => element.toString() === listId
                 );
