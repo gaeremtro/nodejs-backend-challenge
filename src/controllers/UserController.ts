@@ -23,7 +23,7 @@ function userController() {
                     else
                         next();
                 }catch (errore:any){
-                    res.status(502).send({text:'dbError', error: errore})
+                    res.status(502).send({text:'register/dbError', error: errore})
                 }
             }
         }else {

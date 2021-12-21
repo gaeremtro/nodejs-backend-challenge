@@ -9,20 +9,19 @@ function listController() {
     async function addList(req: Request, res: Response, next: NextFunction) {
         if (req.body && req.body.name && req.body.userId) {
             let { userId } = req.body;
-            //it colud be a unique name list too...
             try {
                 let result = await User.findById(userId);
                 console.log(result);
                 if (!result) {
                     res.status(404).send({
-                        text: "There is no user with such id",
+                        text: "addList/There is no user with such id",
                         error: "user-not-found",
                     });
                 } else {
                     next();
                 }
             } catch (error) {
-                res.status(502).send({ text: "dbError", error });
+                res.status(502).send({ text: "addList/dbError", error });
             }
         } else {
             res.status(400).send({
@@ -77,7 +76,7 @@ function listController() {
         } else {
             res.status(400)
                 .send({
-                    text: "Doesnt respect the correct structure, must have a name and password",
+                    text: "Doesnt respect the correct structure, must have a name, password and listId",
                     error: "bad-formated-request",
                 })
                 .end();

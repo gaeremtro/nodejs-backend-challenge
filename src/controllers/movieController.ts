@@ -41,7 +41,7 @@ function movieController() {
             }
         } else {
             res.status(400).send({
-                text: "Doesnt respect the correct structure, must have a name and password",
+                text: "Doesnt respect the correct structure, must have a director, title and listId",
                 error: "bad-formated-request",
             });
         }
@@ -69,7 +69,7 @@ function movieController() {
             }
         } else {
             res.status(400).send({
-                text: "Doesnt respect the correct structure, must have a name and password",
+                text: "Doesnt respect the correct structure, must have a listId",
                 error: "bad-formated-request",
             });
         }
