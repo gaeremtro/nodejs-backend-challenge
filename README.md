@@ -36,3 +36,15 @@ where makes sense. We want to see that you can create an easy-to-maintain codeba
 * **Git** Use a control source platform of your choosing.
 
 * **Solution delivery** Push your changes into a git repo. We will download it and execute it. We'll value best practices (branches based on features, pr to develop and master branch, etc.)
+//-------------------------------------------------------//
+
+Welcome to Movie list API doc. 
+This documentation will help you to use this api.
+I made endpoints for every acction.
+
+# Actioms
+
+* **Register a new user**
+    In order to use the app, first of all is necesary to create a new user, if you dont have one yet.
+    
+
