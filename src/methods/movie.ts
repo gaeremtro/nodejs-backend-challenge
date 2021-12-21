@@ -40,9 +40,8 @@ async function deleteAllMoviesFromList(req: Request, res: Response) {
     let query = { _id: listId };
 
     try {
-        let result = await List.update(query, {$set: { lists: [] }});
-        console.log(result);
-        let deletedCount = await Movie.deleteMany( { _id: { $in: result } } );
+        let result = await List.findOneAndUpdate(query, {$set: { movies: [] }});
+        let deletedCount = await Movie.deleteMany( { _id: { $in: result.movies } } );
 
         res.status(200).send({result,deletedCount});
     } catch (error) {
