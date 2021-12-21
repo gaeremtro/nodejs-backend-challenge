@@ -42,9 +42,10 @@ Welcome to Movie list API doc.
 This documentation will help you to use this api.
 I made endpoints for every acction.
 
-# Actioms
+# Actions
 
 * **Register a new user**
     In order to use the app, first of all is necesary to create a new user, if you dont have one yet.
+    * * 
     
 
