@@ -4,11 +4,11 @@ import { MovieInterface } from "../interfaces/movieInferface";
 export const movieSchema = new Schema<MovieInterface>({
     director: {
         type: String,
+        required: true,
     },
     title: {
         type: String,
         required: true,
-        unique: true,
     },
 });
 

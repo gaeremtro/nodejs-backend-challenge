@@ -7,11 +7,10 @@ const User = require("../schemas/userSchema");
 function listController() {
 
     async function addList(req: Request, res: Response, next: NextFunction) {
-        if (req.body && req.body.name && req.body.userId) {
+        if (req.body && req.body.userId && req.body.listName ) {
             let { userId } = req.body;
             try {
                 let result = await User.findById(userId);
-                console.log(result);
                 if (!result) {
                     res.status(404).send({
                         text: "addList/There is no user with such id",

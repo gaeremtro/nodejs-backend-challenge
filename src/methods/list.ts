@@ -10,7 +10,7 @@ const List = require("../schemas/listSchema");
 const Movie = require("../schemas/movieSchema");
 
 async function addList(req: Request, res: Response) {
-    let data = req.body.name;
+    let data = req.body.listName;
     let userId = req.body.userId;
 
     let query = { _id: userId };
@@ -22,10 +22,10 @@ async function addList(req: Request, res: Response) {
         let result = await newList.save();
 
         if (result && result._id) {
-            await User.findOneAndUpdate(query, {
+            let list = await User.findOneAndUpdate(query, {
                 $push: { lists: result._id },
             });
-            res.status(201).send("new item added succesfully");
+            res.status(201).send({text:"new item added succesfully",newList:result});
         } else {
             res.status(500).send({
                 text: "the list item was created but it cannot be added to the user",

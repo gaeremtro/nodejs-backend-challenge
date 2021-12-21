@@ -22,7 +22,6 @@ const PORT = config.PORT; // 8000
 //Router imports
 const  userRouter = require ('./src/router/userRoutes');
 const listRouter = require ('./src/router/listRouter');
-
 const movieRouter = require ('./src/router/movieRouter');
 
 
