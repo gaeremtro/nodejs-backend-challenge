@@ -45,6 +45,11 @@ I made endpoints for every acction.
 *** Just for now we do the auth passing the username and password by params on every request (except register),
 I higly recommend change this and passing the password encrypted at register, and once the user is registered, give him a token to authenticate every request putting this token on the HEADERS request.
 
+# How to start
+This api is so easy to run, once you have this repository cloned and your MongoDB running, you need to install all dependeces going to project root on terminal and run <npm install> once it finish you just need to start the server using this command <npm start> and this is it!.
+
+PD: if you are running your MongoDB with custom preferences, you must open the index.ts file and, on line 7, and change the url connection (currently localhost:27017) to the url and port that your mongoDB app is listening.
+
 # Actions
 
 * **Register a new user**
@@ -159,3 +164,8 @@ I higly recommend change this and passing the password encrypted at register, an
         "deletedCount": {
             "deletedCount": 1
         },
+
+
+## External dependences
+We used the basic dependences for this project, the most relatables are nodemot, that keeps the server alive on every change and helps a lot to delvelop faster, and we used mongoose to work with MongoDB which it is the best library to work with MongoDB.
+
