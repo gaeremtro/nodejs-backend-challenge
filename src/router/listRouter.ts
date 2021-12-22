@@ -8,7 +8,7 @@ const router = express.Router();
 const {addList, getList,getAllLists} = require('../methods/list')
 
 
-router.post('/addList',listController().addList, addList);
+router.post('/addList',authController,listController().addList, addList);
 
 router.get('/getlist', authController, listController().getList, getList)
 
