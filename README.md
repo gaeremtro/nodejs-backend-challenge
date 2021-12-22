@@ -7,7 +7,7 @@ I made endpoints for every acction.
 I higly recommend change this and passing the password encrypted at register, and once the user is registered, give him a token to authenticate every request putting this token on the HEADERS request.
 
 # How to start
-This api is so easy to run, once you have this repository cloned and your MongoDB running, you need to install all dependeces going to project root on terminal and run <npm install> once it finish you just need to start the server using this command <npm start> and this is it!.
+This api is so easy to run, once you have this repository cloned and your MongoDB running, you need to install all dependeces going to project root on terminal and run <npm install> once it finish you just need to start the server using this command <npm start> and this is it!. If you want to compile the TS for production you have to run <nom run build>
 
 PD: if you are running your MongoDB with custom preferences, you must open the index.ts file and, on line 7, and change the url connection (currently localhost:27017) to the url and port that your mongoDB app is listening.
 
